@@ -24,6 +24,10 @@ namespace shapesMaker
             this.Width = 1100;
             this.Height = 800;
 
+            txtInstructions.Hide();
+            txtInstructions.Left = 400;
+            txtInstructions.Text = "The objective of the game is to guess the word before the man is hung. If you don't correctly guess the word before the man is hung you lose and you can play again";
+
             btnNewWord.Hide();
             btnNewWord.Width = 160;
             btnNewWord.Height = 50;
@@ -45,32 +49,7 @@ namespace shapesMaker
             lblScore.Width = 50;
             lblScore.Height = 20;
 
-            btnA.Hide();
-            btnB.Hide();
-            btnC.Hide();
-            btnD.Hide();
-            btnE.Hide();
-            btnF.Hide();
-            btnG.Hide();
-            btnH.Hide();
-            btnI.Hide();
-            btnJ.Hide();
-            btnK.Hide();
-            btnL.Hide();
-            btnM.Hide();
-            btnN.Hide();
-            btnO.Hide();
-            btnP.Hide();
-            btnQ.Hide();
-            btnR.Hide();
-            btnS.Hide();
-            btnT.Hide();
-            btnU.Hide();
-            btnV.Hide();
-            btnW.Hide();
-            btnX.Hide();
-            btnY.Hide();
-            btnZ.Hide();
+            LetterButtonsHide();
 
             {
                 /*
@@ -186,8 +165,9 @@ namespace shapesMaker
                 btnZ.Height = 34;
                 */
             }
-            
+
         }
+
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -256,7 +236,8 @@ namespace shapesMaker
 
             lblScore.Show();
             btnNewWord.Show();
-            LetterButtonsShow();
+            LetterButtonsShow(); 
+            txtInstructions.Hide();
 
         }
 
@@ -267,10 +248,8 @@ namespace shapesMaker
             btnInstructions.Hide();
             btnStart.Top = 580;
             btnStart.Left = 400;
-
-
+            txtInstructions.Show();
         }
-
 
         private void LetterButtonsShow()
         {
@@ -302,6 +281,35 @@ namespace shapesMaker
             btnZ.Show();
         }
 
+        private void LetterButtonsHide()
+        {
+            btnA.Hide();
+            btnB.Hide();
+            btnC.Hide();
+            btnD.Hide();
+            btnE.Hide();
+            btnF.Hide();
+            btnG.Hide();
+            btnH.Hide();
+            btnI.Hide();
+            btnJ.Hide();
+            btnK.Hide();
+            btnL.Hide();
+            btnM.Hide();
+            btnN.Hide();
+            btnO.Hide();
+            btnP.Hide();
+            btnQ.Hide();
+            btnR.Hide();
+            btnS.Hide();
+            btnT.Hide();
+            btnU.Hide();
+            btnV.Hide();
+            btnW.Hide();
+            btnX.Hide();
+            btnY.Hide();
+            btnZ.Hide();
+        }
 
         void Title(PaintEventArgs e)
         {
@@ -314,5 +322,6 @@ namespace shapesMaker
             PointF drawPoint = new PointF(318.0F, 25.0F);
             g.DrawString(drawString, drawFont, drawBrush, drawPoint);
         }
+
     }
 }
