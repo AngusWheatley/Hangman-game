@@ -371,7 +371,7 @@
             this.btnInstructions2.Name = "btnInstructions2";
             this.btnInstructions2.Size = new System.Drawing.Size(269, 134);
             this.btnInstructions2.TabIndex = 3;
-            this.btnInstructions2.Text = "bt2 ";
+            this.btnInstructions2.Text = "How To Play";
             this.btnInstructions2.UseVisualStyleBackColor = true;
             this.btnInstructions2.Click += new System.EventHandler(this.btnInstructions2_Click);
             // 

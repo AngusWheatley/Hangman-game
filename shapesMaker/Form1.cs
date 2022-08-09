@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace shapesMaker
 {
     public partial class Form1 : Form
     {
-        const string path = "wordList.txt";
+        const string wordFile = "wordList.txt";
         string randomWord = "";
         int score = 0;
 
@@ -247,16 +248,20 @@ namespace shapesMaker
 
             btnStart.Hide();
 
-            lblScore.Show();
-            btnNewWord.Show();
-            LetterButtonsShow();
-            btnInstructions.Hide();
-            btnInstructions2.Show();
-            txtInstructions.Hide();
+            lblScore.Show(); 
+            btnNewWord.Show(); 
+            LetterButtonsShow(); 
+            btnInstructions.Hide(); 
+            btnInstructions2.Show(); 
+            txtInstructions.Hide(); 
             
 
 
             List<string> words = new List<string>();
+
+            StreamReader sr = new StreamReader(wordFile);   //Creates a streamreader used to read the words from the external file
+            string line = "";   //Stores each word temporarily 
+            using (sr);    //The streamreader that reads each word in the external file 
 
         }
 
@@ -271,6 +276,32 @@ namespace shapesMaker
 
 
 
+        }
+
+        
+        void Title(PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;                                        //Code for writing the title
+            String drawString = "HANGMAN";
+            Font drawFont = new Font("", 60, FontStyle.Underline);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            PointF drawPoint = new PointF(318.0F, 25.0F);
+            g.DrawString(drawString, drawFont, drawBrush, drawPoint);
+        }
+
+        private void btnInstructionsHide_Click(object sender, EventArgs e)
+        {
+            btnInstructionsHide.Hide();
+            txtInstructions.Hide();
+            LetterButtonsEnable();
+        }
+
+        private void btnInstructions2_Click(object sender, EventArgs e)
+        {
+            txtInstructions.Show();
+            btnInstructionsHide.Show();
+            btnInstructionsHide.BringToFront();
+            LetterButtonsDisable();
         }
 
         private void LetterButtonsShow()
@@ -335,56 +366,62 @@ namespace shapesMaker
 
         private void LetterButtonsDisable()
         {
-            btnA.Hide();            //Code for hiding all letter buttons
-            btnB.Hide();
-            btnC.Hide();
-            btnD.Hide();
-            btnE.Hide();
-            btnF.Hide();
-            btnG.Hide();
-            btnH.Hide();
-            btnI.Hide();
-            btnJ.Hide();
-            btnK.Hide();
-            btnL.Hide();
-            btnM.Hide();
-            btnN.Hide();
-            btnO.Hide();
-            btnP.Hide();
-            btnQ.Hide();
-            btnR.Hide();
-            btnS.Hide();
-            btnT.Hide();
-            btnU.Hide();
-            btnV.Hide();
-            btnW.Hide();
-            btnX.Hide();
-            btnY.Hide();
-            btnZ.Hide();
+            btnA.Enabled = false;            //Code for hiding all letter buttons
+            btnB.Enabled = false;
+            btnC.Enabled = false;
+            btnD.Enabled = false;
+            btnE.Enabled = false;
+            btnF.Enabled = false;
+            btnG.Enabled = false;
+            btnH.Enabled = false;
+            btnI.Enabled = false;
+            btnJ.Enabled = false;
+            btnK.Enabled = false;
+            btnL.Enabled = false;
+            btnM.Enabled = false;
+            btnN.Enabled = false;
+            btnO.Enabled = false;
+            btnP.Enabled = false;
+            btnQ.Enabled = false;
+            btnR.Enabled = false;
+            btnS.Enabled = false;
+            btnT.Enabled = false;
+            btnU.Enabled = false;
+            btnV.Enabled = false;
+            btnW.Enabled = false;
+            btnX.Enabled = false;
+            btnY.Enabled = false;
+            btnZ.Enabled = false;
         }
 
-        void Title(PaintEventArgs e)
+        private void LetterButtonsEnable()
         {
-            Graphics g = e.Graphics;                                        //Code for writing the title
-            String drawString = "HANGMAN";
-            Font drawFont = new Font("", 60, FontStyle.Underline);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
-            PointF drawPoint = new PointF(318.0F, 25.0F);
-            g.DrawString(drawString, drawFont, drawBrush, drawPoint);
+            btnA.Enabled = true;            //Code for hiding all letter buttons
+            btnB.Enabled = true;
+            btnC.Enabled = true;
+            btnD.Enabled = true;
+            btnE.Enabled = true;
+            btnF.Enabled = true;
+            btnG.Enabled = true;
+            btnH.Enabled = true;
+            btnI.Enabled = true;
+            btnJ.Enabled = true;
+            btnK.Enabled = true;
+            btnL.Enabled = true;
+            btnM.Enabled = true;
+            btnN.Enabled = true;
+            btnO.Enabled = true;
+            btnP.Enabled = true;
+            btnQ.Enabled = true;
+            btnR.Enabled = true;
+            btnS.Enabled = true;
+            btnT.Enabled = true;
+            btnU.Enabled = true;
+            btnV.Enabled = true;
+            btnW.Enabled = true;
+            btnX.Enabled = true;
+            btnY.Enabled = true;
+            btnZ.Enabled = true;
         }
-
-        private void btnInstructionsHide_Click(object sender, EventArgs e)
-        {
-            btnInstructionsHide.Hide();
-            txtInstructions.Hide();
-        }
-
-        private void btnInstructions2_Click(object sender, EventArgs e)
-        {
-            txtInstructions.Show();
-            btnInstructionsHide.Show();
-            btnInstructionsHide.BringToFront();
-        }
-
     }
 }
