@@ -25,24 +25,29 @@ namespace shapesMaker
             this.Height = 800;
 
             txtInstructions.Hide();
-            txtInstructions.Left = 400;
-            txtInstructions.Text = "The objective of the game is to guess the word before the man is hung. If you don't correctly guess the word before the man is hung you lose and you can play again";
+            txtInstructions.Width = 700;
+            txtInstructions.Height = 200;
+            txtInstructions.Left = 200;
+            txtInstructions.Top = 220;
+            txtInstructions.Font = new Font(txtInstructions.Font.FontFamily, 10);
+            txtInstructions.Text = "The objective of the game is to guess the word before the man is hung. If you don't correctly guess the word before the man is hung you lose. ";
+
 
             btnNewWord.Hide();
             btnNewWord.Width = 160;
             btnNewWord.Height = 50;
-            btnNewWord.Left = ClientSize.Width - 1050;
-            btnNewWord.Top = ClientSize.Height - 80;
+            btnNewWord.Left = 50;
+            btnNewWord.Top = 720;
 
             btnStart.Width = 300;
             btnStart.Height = 150;
-            btnStart.Left = ClientSize.Width - 900;
-            btnStart.Top = ClientSize.Height - 550;
+            btnStart.Left = 200;
+            btnStart.Top = 200;
 
             btnInstructions.Width = 300;
             btnInstructions.Height = 150;
-            btnInstructions.Left = ClientSize.Width - 500;
-            btnInstructions.Top = ClientSize.Height - 550;
+            btnInstructions.Left = 600;
+            btnInstructions.Top = 200;
 
 
             lblScore.Hide();
@@ -232,12 +237,15 @@ namespace shapesMaker
         {
             start = true;
             btnInstructions.Hide();
+
             btnStart.Hide();
 
             lblScore.Show();
             btnNewWord.Show();
             LetterButtonsShow(); 
             txtInstructions.Hide();
+
+            List<string> words = new List<string>();
 
         }
 
