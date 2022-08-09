@@ -12,7 +12,6 @@ namespace shapesMaker
 {
     public partial class Form1 : Form
     {
-        bool start = false;
         const string path = "wordList.txt";
         string randomWord = "";
         int score = 0;
@@ -21,7 +20,7 @@ namespace shapesMaker
         {
             InitializeComponent();
 
-            this.Width = 1100;
+            this.Width = 1100;                  //Creates the window to be a set size
             this.Height = 800;
 
             txtInstructions.Hide();
@@ -29,7 +28,7 @@ namespace shapesMaker
             txtInstructions.Height = 200;
             txtInstructions.Left = 200;
             txtInstructions.Top = 220;
-            txtInstructions.Font = new Font(txtInstructions.Font.FontFamily, 10);
+            txtInstructions.Font = new Font(txtInstructions.Font.FontFamily, 12);
             txtInstructions.Text = "The objective of the game is to guess the word before the man is hung. If you don't correctly guess the word before the man is hung you lose. ";
 
 
@@ -37,7 +36,7 @@ namespace shapesMaker
             btnNewWord.Width = 160;
             btnNewWord.Height = 50;
             btnNewWord.Left = 50;
-            btnNewWord.Top = 720;
+            btnNewWord.Top = 680;
 
             btnStart.Width = 300;
             btnStart.Height = 150;
@@ -48,6 +47,19 @@ namespace shapesMaker
             btnInstructions.Height = 150;
             btnInstructions.Left = 600;
             btnInstructions.Top = 200;
+
+            btnInstructions2.Hide();
+            btnInstructions2.Width = 230;
+            btnInstructions2.Height = 50;
+            btnInstructions2.Left = 230;
+            btnInstructions2.Top = 680;
+            btnInstructions2.Font = new Font(txtInstructions.Font.FontFamily, 20);
+
+            btnInstructionsHide.Hide();
+            btnInstructionsHide.Width = 120;
+            btnInstructionsHide.Height = 40;
+            btnInstructionsHide.Left = 768;
+            btnInstructionsHide.Top = 370;
 
 
             lblScore.Hide();
@@ -177,8 +189,8 @@ namespace shapesMaker
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            Pen myPen = new Pen(Color.Black);               //Paint the exterior
-            Brush brush = new SolidBrush(Color.Red);        //Paint the exterior
+            Pen blackPen = new Pen(Color.Black);               //Pen for drawing lines
+            Brush brush = new SolidBrush(Color.Red);        //Brush for drawing shapes
 
             /*
             g.DrawLine(myPen, 2, 2, 400, 450);
@@ -187,20 +199,20 @@ namespace shapesMaker
             g.DrawArc(myPen, 400, 100, 50, 50, 0, 315);
             */
 
-            g.DrawLine(myPen, 50, 100, 50, 600);
-            g.DrawLine(myPen, 50, 100, 270, 100);
-            g.DrawLine(myPen, 50, 190, 140, 100);
-            g.DrawLine(myPen, 270, 100, 270, 180);
-            g.DrawArc(myPen, 230, 180, 80, 80, 0, 360);
-            g.DrawLine(myPen, 270, 260, 270, 400);
-            g.DrawLine(myPen, 270, 260, 220, 340);
-            g.DrawLine(myPen, 270, 260, 320, 340);
-            g.DrawLine(myPen, 270, 400, 220, 480);
-            g.DrawLine(myPen, 270, 400, 320, 480);
-            g.DrawLine(myPen, 245, 200, 260, 215);
-            g.DrawLine(myPen, 245, 215, 260, 200);
-            g.DrawLine(myPen, 295, 215, 280, 200);
-            g.DrawLine(myPen, 295, 200, 280, 215);
+            g.DrawLine(blackPen, 50, 100, 50, 600);
+            g.DrawLine(blackPen, 50, 100, 270, 100);
+            g.DrawLine(blackPen, 50, 190, 140, 100);
+            g.DrawLine(blackPen, 270, 100, 270, 180);
+            g.DrawArc(blackPen, 230, 180, 80, 80, 0, 360);
+            g.DrawLine(blackPen, 270, 260, 270, 400);
+            g.DrawLine(blackPen, 270, 260, 220, 340);
+            g.DrawLine(blackPen, 270, 260, 320, 340);
+            g.DrawLine(blackPen, 270, 400, 220, 480);
+            g.DrawLine(blackPen, 270, 400, 320, 480);
+            g.DrawLine(blackPen, 245, 200, 260, 215);
+            g.DrawLine(blackPen, 245, 215, 260, 200);
+            g.DrawLine(blackPen, 295, 215, 280, 200);
+            g.DrawLine(blackPen, 295, 200, 280, 215);
 
 
             Title(e);
@@ -227,23 +239,22 @@ namespace shapesMaker
         private void lblScore_Load(object sender, EventArgs e)
         {
             lblScore.Hide();
-            if (start = true)
-            {
-                lblScore.Text = "Score: " + score;
-            }
+            lblScore.Text = "Score: " + score;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            start = true;
-            btnInstructions.Hide();
 
             btnStart.Hide();
 
             lblScore.Show();
             btnNewWord.Show();
-            LetterButtonsShow(); 
+            LetterButtonsShow();
+            btnInstructions.Hide();
+            btnInstructions2.Show();
             txtInstructions.Hide();
+            
+
 
             List<string> words = new List<string>();
 
@@ -251,17 +262,20 @@ namespace shapesMaker
 
         private void btnInstructions_Click(object sender, EventArgs e)
         {
-
-            start = true;
             btnInstructions.Hide();
             btnStart.Top = 580;
             btnStart.Left = 400;
-            txtInstructions.Show();
+            txtInstructions.Show(); 
+
+           
+
+
+
         }
 
         private void LetterButtonsShow()
         {
-            btnA.Show();
+            btnA.Show();            //Code for showing all letter buttons
             btnB.Show();
             btnC.Show();
             btnD.Show();
@@ -291,7 +305,37 @@ namespace shapesMaker
 
         private void LetterButtonsHide()
         {
-            btnA.Hide();
+            btnA.Hide();            //Code for hiding all letter buttons
+            btnB.Hide();
+            btnC.Hide();
+            btnD.Hide();
+            btnE.Hide();
+            btnF.Hide();
+            btnG.Hide();
+            btnH.Hide();
+            btnI.Hide();
+            btnJ.Hide();
+            btnK.Hide();
+            btnL.Hide();
+            btnM.Hide();
+            btnN.Hide();
+            btnO.Hide();
+            btnP.Hide();
+            btnQ.Hide();
+            btnR.Hide();
+            btnS.Hide();
+            btnT.Hide();
+            btnU.Hide();
+            btnV.Hide();
+            btnW.Hide();
+            btnX.Hide();
+            btnY.Hide();
+            btnZ.Hide();
+        }
+
+        private void LetterButtonsDisable()
+        {
+            btnA.Hide();            //Code for hiding all letter buttons
             btnB.Hide();
             btnC.Hide();
             btnD.Hide();
@@ -321,14 +365,25 @@ namespace shapesMaker
 
         void Title(PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
-            Pen myPen = new Pen(Color.Black);
-
+            Graphics g = e.Graphics;                                        //Code for writing the title
             String drawString = "HANGMAN";
             Font drawFont = new Font("", 60, FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
             PointF drawPoint = new PointF(318.0F, 25.0F);
             g.DrawString(drawString, drawFont, drawBrush, drawPoint);
+        }
+
+        private void btnInstructionsHide_Click(object sender, EventArgs e)
+        {
+            btnInstructionsHide.Hide();
+            txtInstructions.Hide();
+        }
+
+        private void btnInstructions2_Click(object sender, EventArgs e)
+        {
+            txtInstructions.Show();
+            btnInstructionsHide.Show();
+            btnInstructionsHide.BringToFront();
         }
 
     }
