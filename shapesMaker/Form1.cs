@@ -294,6 +294,8 @@ namespace shapesMaker
             btnInstructionsHide.Hide();
             txtInstructions.Hide();
             LetterButtonsEnable();
+            btnInstructions2.Enabled = true;
+            btnNewWord.Enabled = true;
         }
 
         private void btnInstructions2_Click(object sender, EventArgs e)
@@ -302,6 +304,8 @@ namespace shapesMaker
             btnInstructionsHide.Show();
             btnInstructionsHide.BringToFront();
             LetterButtonsDisable();
+            btnInstructions2.Enabled = false;
+            btnNewWord.Enabled = false;
         }
 
         private void LetterButtonsShow()
