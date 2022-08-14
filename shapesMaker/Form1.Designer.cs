@@ -61,6 +61,8 @@
             this.txtInstructions = new System.Windows.Forms.TextBox();
             this.btnInstructionsHide = new System.Windows.Forms.Button();
             this.btnInstructions2 = new System.Windows.Forms.Button();
+            this.lblWord = new System.Windows.Forms.Label();
+            this.btnGetRandomWord = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnNewWord
@@ -375,11 +377,32 @@
             this.btnInstructions2.UseVisualStyleBackColor = true;
             this.btnInstructions2.Click += new System.EventHandler(this.btnInstructions2_Click);
             // 
+            // lblWord
+            // 
+            this.lblWord.AutoSize = true;
+            this.lblWord.Location = new System.Drawing.Point(492, 364);
+            this.lblWord.Name = "lblWord";
+            this.lblWord.Size = new System.Drawing.Size(35, 13);
+            this.lblWord.TabIndex = 7;
+            this.lblWord.Text = "label1";
+            // 
+            // btnGetRandomWord
+            // 
+            this.btnGetRandomWord.Location = new System.Drawing.Point(408, 89);
+            this.btnGetRandomWord.Name = "btnGetRandomWord";
+            this.btnGetRandomWord.Size = new System.Drawing.Size(75, 23);
+            this.btnGetRandomWord.TabIndex = 8;
+            this.btnGetRandomWord.Text = "button1";
+            this.btnGetRandomWord.UseVisualStyleBackColor = true;
+            this.btnGetRandomWord.Click += new System.EventHandler(this.btnGetRandomWord_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 761);
+            this.Controls.Add(this.btnGetRandomWord);
+            this.Controls.Add(this.lblWord);
             this.Controls.Add(this.btnInstructionsHide);
             this.Controls.Add(this.txtInstructions);
             this.Controls.Add(this.btnN);
@@ -457,6 +480,8 @@
         private System.Windows.Forms.TextBox txtInstructions;
         private System.Windows.Forms.Button btnInstructionsHide;
         private System.Windows.Forms.Button btnInstructions2;
+        private System.Windows.Forms.Label lblWord;
+        private System.Windows.Forms.Button btnGetRandomWord;
     }
 }
 
