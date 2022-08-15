@@ -16,6 +16,8 @@ namespace shapesMaker
         const string wordFile = "wordList.txt";
         string randomWord = "";
         int score = 0;
+        int failScore = 0;
+        
 
         public Form1()
         {
@@ -66,6 +68,7 @@ namespace shapesMaker
             lblScore.Hide();
             lblScore.Width = 50;
             lblScore.Height = 20;
+
 
             LetterButtonsHide();
 
@@ -255,34 +258,14 @@ namespace shapesMaker
             btnInstructions2.Show();
             txtInstructions.Hide();
 
-            
-            
+            List<string> words = new List<string>();
+            RemoveAllPlaceHolders();
+            ReadTextFile(words);
+            SelectRandomWord(words);
+            CreateLabelsForRandomWord();
+
 
         }
-
-        private void CreateLabelsForRandomWord()
-        {
-            Label[] labels = new Label[randomWord.Length];
-            int xPos = 360;
-            for (int i = 0; i < randomWord.Length; i++)
-            {
-                labels[i] = new Label();
-                labels[i].Text = "--";
-                labels[i].Location = new Point(xPos, 140);
-                labels[i].Enabled = true;
-                labels[i].Visible = true;
-                labels[i].Width = 30;
-                labels[i].Height = 12;
-                labels[i].Tag = "placeHolder";
-                xPos += 30;
-            }
-            for (int i = 0; i < randomWord.Length; i++)
-            {
-                this.Controls.Add(labels[i]);
-            }
-        }
-
-        
 
         private void btnGetRandomWord_Click(object sender, EventArgs e)
         {
@@ -293,6 +276,53 @@ namespace shapesMaker
             CreateLabelsForRandomWord();
         }
 
+        private void LetterPress(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+
+
+
+            List<Label> placeHoldersToAdd = new List<Label>();
+            foreach (Label label in Controls.OfType<Label>())
+            {
+                if (label.Tag != null && label.Tag.ToString() == "placeHolder")
+                {
+                    placeHoldersToAdd.Add(label);
+                }
+            }
+
+            int lettersCorrect = 0;
+
+            for (int i = 0; i < randomWord.Length; i++)
+            {
+                if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
+                {
+                    placeHoldersToAdd[i].Text = Convert.ToString(button.Text);
+                    lettersCorrect++;
+
+                }
+                
+                if (lettersCorrect == randomWord.Length)
+                {
+                    labelYouWin.Visible = true;
+                    labelYouWin.Text = "You Win!";
+                }
+
+                else
+                {
+                    failScore++;
+                }
+            }
+            /*
+            if (failScore == 1)
+            {
+                g.DrawLine(blackPen, 50, 100, 50, 600);
+            }*/
+
+        }
+
+
+
 
         private void btnInstructions_Click(object sender, EventArgs e)
         {
@@ -300,14 +330,8 @@ namespace shapesMaker
             btnStart.Top = 580;
             btnStart.Left = 400;
             txtInstructions.Show(); 
-
-           
-
-
-
         }
 
-        
         void Title(PaintEventArgs e)
         {
             Graphics g = e.Graphics;                                        //Code for writing the title
@@ -475,11 +499,11 @@ namespace shapesMaker
             }
         }
 
-       private static void ReadTextFile(List <string> words)
+        private static void ReadTextFile(List <string> words)
         {
             StreamReader sr = new StreamReader(wordFile);   //Creates a streamreader used to read the words from the external file
             string line = "";   //Stores each word temporarily 
-            using (sr);    //The streamreader that reads each word in the external file 
+            using (sr)    //The streamreader that reads each word in the external file 
             {
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -494,6 +518,28 @@ namespace shapesMaker
             int randomWordNumber = random.Next(words.Count);
             randomWord = words[randomWordNumber];
             lblWord.Text = randomWord;
+        }
+
+        private void CreateLabelsForRandomWord()
+        {
+            Label[] labels = new Label[randomWord.Length];
+            int xPos = 632;
+            for (int i = 0; i < randomWord.Length; i++)
+            {
+                labels[i] = new Label();
+                labels[i].Text = "--";
+                labels[i].Location = new Point(xPos, 450);
+                labels[i].Enabled = true;
+                labels[i].Visible = true;
+                labels[i].Width = 30;
+                labels[i].Height = 12;
+                labels[i].Tag = "placeHolder";
+                xPos += 30;
+            }
+            for (int i = 0; i < randomWord.Length; i++)
+            {
+                this.Controls.Add(labels[i]);
+            }
         }
     }
 }
