@@ -202,6 +202,7 @@ namespace shapesMaker
             g.DrawEllipse(myPen, 300, 200, 50, 50);
             g.DrawArc(myPen, 400, 100, 50, 50, 0, 315);
             */
+            
 
             g.DrawLine(blackPen, 50, 100, 50, 600);
             g.DrawLine(blackPen, 50, 100, 270, 100);
@@ -274,6 +275,7 @@ namespace shapesMaker
             ReadTextFile(words);
             SelectRandomWord(words);
             CreateLabelsForRandomWord();
+            LetterButtonsEnable();
         }
 
         private void LetterPress(object sender, EventArgs e)
@@ -295,6 +297,8 @@ namespace shapesMaker
 
             for (int i = 0; i < randomWord.Length; i++)
             {
+                    button.Enabled = false;
+
                 if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
                 {
                     placeHoldersToAdd[i].Text = Convert.ToString(button.Text);
@@ -313,11 +317,13 @@ namespace shapesMaker
                     failScore++;
                 }
             }
+
             /*
             if (failScore == 1)
             {
-                g.DrawLine(blackPen, 50, 100, 50, 600);
-            }*/
+                drawing1 = g.DrawLine(blackPen, 50, 100, 50, 600);
+            }
+            */
 
         }
 
@@ -349,6 +355,7 @@ namespace shapesMaker
             LetterButtonsEnable();
             btnInstructions2.Enabled = true;
             btnNewWord.Enabled = true;
+            btnGetRandomWord.Enabled = true;
         }
 
         private void btnInstructions2_Click(object sender, EventArgs e)
@@ -359,6 +366,7 @@ namespace shapesMaker
             LetterButtonsDisable();
             btnInstructions2.Enabled = false;
             btnNewWord.Enabled = false;
+            btnGetRandomWord.Enabled = false;
         }
 
         private void LetterButtonsShow()
@@ -540,6 +548,11 @@ namespace shapesMaker
             {
                 this.Controls.Add(labels[i]);
             }
+        }
+
+        private void paintFirst(PaintEventArgs e, Graphics g, Pen blackPen)
+        {
+            g.DrawLine(blackPen, 50, 100, 50, 600);
         }
     }
 }
