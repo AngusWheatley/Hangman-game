@@ -202,9 +202,8 @@ namespace shapesMaker
             g.DrawEllipse(myPen, 300, 200, 50, 50);
             g.DrawArc(myPen, 400, 100, 50, 50, 0, 315);
             */
-            
 
-            g.DrawLine(blackPen, 50, 100, 50, 600);
+            
             g.DrawLine(blackPen, 50, 100, 270, 100);
             g.DrawLine(blackPen, 50, 190, 140, 100);
             g.DrawLine(blackPen, 270, 100, 270, 180);
@@ -318,12 +317,16 @@ namespace shapesMaker
                 }
             }
 
-            /*
+            
             if (failScore == 1)
             {
+               
+
+                /*
                 drawing1 = g.DrawLine(blackPen, 50, 100, 50, 600);
+                */
             }
-            */
+            
 
         }
 
@@ -550,9 +553,12 @@ namespace shapesMaker
             }
         }
 
-        private void paintFirst(PaintEventArgs e, Graphics g, Pen blackPen)
+        /*
+        private void printFirstLine(PaintEventArgs pe, int x)
         {
-            g.DrawLine(blackPen, 50, 100, 50, 600);
-        }
+            Graphics gr = pe.Graphics;
+            Pen blackPen = new Pen(Color.Black);
+            gr.DrawLine(blackPen, 50, 100, 50, 600);
+        }*/
     }
 }
