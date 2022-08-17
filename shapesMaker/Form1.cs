@@ -17,7 +17,9 @@ namespace shapesMaker
         string randomWord = "";
         int score = 0;
         int failScore = 0;
-        
+
+        List<Button> pressedLetter = new List<Button>();
+
 
         public Form1()
         {
@@ -359,10 +361,25 @@ namespace shapesMaker
             btnInstructions2.Enabled = true;
             btnNewWord.Enabled = true;
             btnGetRandomWord.Enabled = true;
+
+            foreach (Button button in pressedLetter)
+            {
+                button.Enabled = false;
+            }
+
         }
 
         private void btnInstructions2_Click(object sender, EventArgs e)
         {
+            
+            foreach (Button button in Controls.OfType<Button>())
+            {
+                if (button.Enabled == false)
+                {
+                    pressedLetter.Add(button);
+                }
+            }
+
             txtInstructions.Show();
             btnInstructionsHide.Show();
             btnInstructionsHide.BringToFront();
@@ -370,6 +387,11 @@ namespace shapesMaker
             btnInstructions2.Enabled = false;
             btnNewWord.Enabled = false;
             btnGetRandomWord.Enabled = false;
+
+            foreach (Button button in pressedLetter)
+            {
+                button.Enabled = false;
+            }
         }
 
         private void LetterButtonsShow()
