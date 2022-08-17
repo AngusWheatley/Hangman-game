@@ -298,37 +298,60 @@ namespace shapesMaker
 
             for (int i = 0; i < randomWord.Length; i++)
             {
-                    button.Enabled = false;
+                int j = 0;
+                button.Enabled = false;
 
                 if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
                 {
                     placeHoldersToAdd[i].Text = Convert.ToString(button.Text);
-                    lettersCorrect++;
-
-                }
-                
-                if (lettersCorrect == randomWord.Length)
-                {
-                    labelYouWin.Visible = true;
-                    labelYouWin.Text = "You Win!";
+                    j++;
                 }
 
-                else
+                for (j = j; j < 1; j++)
                 {
-                    failScore++;
+                    int k = 0;
+                    if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
+                    {
+                        k++;
+                    }
+
+                    for (k = 0; k < 1; k++)
+                    {
+                        if (Convert.ToChar(button.Text.ToLower()) != randomWord[i])
+                        {
+                            labelYouWin.Text = "yes";
+                        }
+                    }
+                }
+
+                {
+                    /*
+                    if (lettersCorrect == randomWord.Length)
+                    {
+                        labelYouWin.Visible = true;
+                        labelYouWin.Text = "You Win!";
+                    }
+
+                    else
+                    {
+                        failScore++;
+                    }*/
                 }
             }
+            /*
+            if (Convert.ToChar(button.Text()) == randomWord.Length)
+            {
 
-            
+            }
+            */
+
+
+            /*
             if (failScore == 1)
             {
-               
-
-                /*
                 drawing1 = g.DrawLine(blackPen, 50, 100, 50, 600);
-                */
             }
-            
+            */
 
         }
 
