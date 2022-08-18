@@ -17,6 +17,8 @@ namespace shapesMaker
         string randomWord = "";
         int score = 0;
         int failScore = 0;
+        int checkOne = 0;
+        int checkTwo = 0;
 
         List<Button> pressedLetter = new List<Button>();
 
@@ -282,7 +284,7 @@ namespace shapesMaker
         private void LetterPress(object sender, EventArgs e)
         {
             Button button = sender as Button;
-
+            
 
 
             List<Label> placeHoldersToAdd = new List<Label>();
@@ -294,34 +296,40 @@ namespace shapesMaker
                 }
             }
 
-            int lettersCorrect = 0;
 
+            int lettersCorrect = 0;
             for (int i = 0; i < randomWord.Length; i++)
             {
-                int j = 0;
                 button.Enabled = false;
 
                 if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
                 {
                     placeHoldersToAdd[i].Text = Convert.ToString(button.Text);
-                    j++;
+                    checkOne++;
                 }
 
-                for (j = j; j < 1; j++)
-                {
-                    int k = 0;
-                    if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
-                    {
-                        k++;
-                    }
 
-                    for (k = 0; k < 1; k++)
+
+
+
+                {/*
+                    for (j = j; j < 1; j++)
                     {
-                        if (Convert.ToChar(button.Text.ToLower()) != randomWord[i])
+                        int k = 0;
+                        if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
                         {
-                            labelYouWin.Text = "yes";
+                            k++;
                         }
-                    }
+
+                        for (k = 0; k < 1; k++)
+                        {
+                            if (Convert.ToChar(button.Text.ToLower()) != randomWord[i])
+                            {
+                                labelYouWin.Text = "yes";
+                                j++;
+                            }
+                        }
+                    }*/
                 }
 
                 {
@@ -338,13 +346,20 @@ namespace shapesMaker
                     }*/
                 }
             }
-            /*
+
+            checkTwo = checkOne;
+            if (checkTwo == randomWord.Length)
+            {
+                btnNewWord.Enabled = true;
+
+            }
+            
+            { /*
             if (Convert.ToChar(button.Text()) == randomWord.Length)
             {
 
             }
             */
-
 
             /*
             if (failScore == 1)
@@ -352,6 +367,7 @@ namespace shapesMaker
                 drawing1 = g.DrawLine(blackPen, 50, 100, 50, 600);
             }
             */
+            }
 
         }
 
@@ -382,7 +398,6 @@ namespace shapesMaker
             txtInstructions.Hide();
             LetterButtonsEnable();
             btnInstructions2.Enabled = true;
-            btnNewWord.Enabled = true;
             btnGetRandomWord.Enabled = true;
 
             foreach (Button button in pressedLetter)
