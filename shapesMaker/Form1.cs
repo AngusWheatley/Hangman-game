@@ -350,7 +350,8 @@ namespace shapesMaker
             checkTwo = checkOne;
             if (checkTwo == randomWord.Length)
             {
-                btnNewWord.Enabled = true;
+                btnGetRandomWord.Enabled = true;
+                labelYouWin.Text = "Win";
 
             }
             
