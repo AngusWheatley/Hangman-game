@@ -207,19 +207,36 @@ namespace shapesMaker
             g.DrawArc(myPen, 400, 100, 50, 50, 0, 315);
             */
 
-            
-            g.DrawLine(blackPen, 50, 100, 270, 100);
+            g.DrawRectangle(blackPen, 40, 580, 250, 1);
+
+            g.DrawRectangle(blackPen, 50, 100, 240, 1);
+
+            g.DrawRectangle(blackPen, 50, 100, 1, 480);
+
+
             g.DrawLine(blackPen, 50, 190, 140, 100);
-            g.DrawLine(blackPen, 270, 100, 270, 180);
+            g.DrawLine(blackPen, 54, 186, 140, 100);
+
+            g.DrawRectangle(blackPen, 270, 100, 1, 80);
+
+
             g.DrawArc(blackPen, 230, 180, 80, 80, 0, 360);
             g.DrawLine(blackPen, 270, 260, 270, 400);
+
             g.DrawLine(blackPen, 270, 260, 220, 340);
+
             g.DrawLine(blackPen, 270, 260, 320, 340);
+
             g.DrawLine(blackPen, 270, 400, 220, 480);
+
             g.DrawLine(blackPen, 270, 400, 320, 480);
+
             g.DrawLine(blackPen, 245, 200, 260, 215);
+
             g.DrawLine(blackPen, 245, 215, 260, 200);
+
             g.DrawLine(blackPen, 295, 215, 280, 200);
+
             g.DrawLine(blackPen, 295, 200, 280, 215);
 
 
@@ -242,6 +259,12 @@ namespace shapesMaker
         private void btnNewWord_Click(object sender, EventArgs e)
         {
 
+            List<string> words = new List<string>();
+            RemoveAllPlaceHolders();
+            ReadTextFile(words);
+            SelectRandomWord(words);
+            CreateLabelsForRandomWord();
+            LetterButtonsEnable();
         }
 
         private void lblScore_Load(object sender, EventArgs e)
@@ -308,10 +331,6 @@ namespace shapesMaker
                     checkOne++;
                 }
 
-
-
-
-
                 {/*
                     for (j = j; j < 1; j++)
                     {
@@ -332,19 +351,6 @@ namespace shapesMaker
                     }*/
                 }
 
-                {
-                    /*
-                    if (lettersCorrect == randomWord.Length)
-                    {
-                        labelYouWin.Visible = true;
-                        labelYouWin.Text = "You Win!";
-                    }
-
-                    else
-                    {
-                        failScore++;
-                    }*/
-                }
             }
 
             checkTwo = checkOne;
@@ -352,6 +358,9 @@ namespace shapesMaker
             {
                 btnGetRandomWord.Enabled = true;
                 labelYouWin.Text = "Win";
+                btnNewWord.Enabled = true;
+
+                LetterButtonsDisable();
 
             }
             
@@ -400,6 +409,7 @@ namespace shapesMaker
             LetterButtonsEnable();
             btnInstructions2.Enabled = true;
             btnGetRandomWord.Enabled = true;
+            btnNewWord.Enabled = true;
 
             foreach (Button button in pressedLetter)
             {
