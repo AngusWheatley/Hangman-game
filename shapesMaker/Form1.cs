@@ -27,7 +27,7 @@ namespace shapesMaker
             InitializeComponent();
 
             this.Width = 1100;                  //Creates the window to be a set size
-            this.Height = 800;
+            this.Height = 820;
 
             txtInstructions.Hide();
             txtInstructions.Width = 700;
@@ -35,14 +35,23 @@ namespace shapesMaker
             txtInstructions.Left = 200;
             txtInstructions.Top = 220;
             txtInstructions.Font = new Font(txtInstructions.Font.FontFamily, 12);
-            txtInstructions.Text = "The objective of the game is to guess the word before the man is hung. If you don't correctly guess the word before the man is hung you lose. ";
+            txtInstructions.Text = "The objective of the game is to guess the word before the man is hung. Press each letter to guess if the letter is in the word. If it is not then one piece of the 'hangman' is drawn. If all eleven pieces of the 'hangman' is drawn before you correctly guess the word you lose. If you win you can choose to keep playing or leave the game. ";
 
+            lblWord.Visible = false;
 
             btnNewWord.Hide();
+            btnNewWord.Enabled = false;
             btnNewWord.Width = 160;
             btnNewWord.Height = 50;
             btnNewWord.Left = 50;
             btnNewWord.Top = 680;
+
+            btnNewGame.Hide();
+            btnNewGame.Enabled = false;
+            btnNewGame.Width = 160;
+            btnNewGame.Height = 50;
+            btnNewGame.Left = 50;
+            btnNewGame.Top = 680;
 
             btnStart.Width = 300;
             btnStart.Height = 150;
@@ -67,10 +76,18 @@ namespace shapesMaker
             btnInstructionsHide.Left = 768;
             btnInstructionsHide.Top = 370;
 
+            lblGameOutcome.Hide();
 
             lblScore.Hide();
             lblScore.Width = 50;
             lblScore.Height = 20;
+
+            txtIncorrectLetters.Hide();
+            txtIncorrectLetters.Width = 100;
+            txtIncorrectLetters.Height = 35;
+            txtIncorrectLetters.Left = 800;
+            txtIncorrectLetters.Top = 400;
+            txtIncorrectLetters.Text = "Incorrect Letters: \n";
 
 
             picStandBase.Hide();
@@ -94,7 +111,6 @@ namespace shapesMaker
             //Image picStandSupportImage = picStandSupport.Image;
             //picStandSupportImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
             //picStandSupport.Image = picStandSupportImage;
-
             picStandSupport.Hide();
             picStandSupport.Width = 120;
             picStandSupport.Height = 15;
@@ -305,15 +321,45 @@ namespace shapesMaker
 
         }
 
-        private void btnNewWord_Load(object sender, EventArgs e)
+
+        private void btnNewGame_Click(object sender, EventArgs e)
         {
-
+            List<string> words = new List<string>();
+            RemoveAllPlaceHolders();
+            ReadTextFile(words);
+            SelectRandomWord(words);
+            CreateLabelsForRandomWord();
+            LetterButtonsEnable();
+            HangmanHide();
+            txtIncorrectLetters.Text = "Incorrect Letters: \n";
+            lblScore.Text = "Score: " + Convert.ToString(score);
+            lettersIncorrect = 0;
+            lettersCorrect = 0;
+            score = 0;
+            lblScore.Text = "Score: " + Convert.ToString(score);
+            btnNewGame.Visible = false;
+            btnInstructions2.Enabled = true;
+            btnNewWord.Enabled = false;
+            btnNewWord.Visible = true;
+            lblGameOutcome.Visible = false;
         }
-
 
         private void btnNewWord_Click(object sender, EventArgs e)
         {
-
+            List<string> words = new List<string>();
+            RemoveAllPlaceHolders();
+            ReadTextFile(words);
+            SelectRandomWord(words);
+            CreateLabelsForRandomWord();
+            LetterButtonsEnable();
+            HangmanHide();
+            txtIncorrectLetters.Text = "Incorrect Letters: \n";
+            lblScore.Text = "Score: " + Convert.ToString(score);
+            lettersIncorrect = 0;
+            lettersCorrect = 0;
+            btnNewWord.Enabled = false;
+            btnInstructions2.Enabled = true;
+            lblGameOutcome.Visible = false;
         }
 
         private void lblScore_Load(object sender, EventArgs e)
@@ -339,18 +385,9 @@ namespace shapesMaker
             ReadTextFile(words);
             SelectRandomWord(words);
             CreateLabelsForRandomWord();
+            txtIncorrectLetters.Show();
 
 
-        }
-
-        private void btnGetRandomWord_Click(object sender, EventArgs e)
-        {
-            List<string> words = new List<string>();
-            RemoveAllPlaceHolders();
-            ReadTextFile(words);
-            SelectRandomWord(words);
-            CreateLabelsForRandomWord();
-            LetterButtonsEnable();
         }
 
         private void LetterPress(object sender, EventArgs e)
@@ -368,8 +405,6 @@ namespace shapesMaker
                 }
             }
 
-            int j = 0;
-
             for (int i = 0; i < randomWord.Length; i++)
             {
                 button.Enabled = false;
@@ -378,33 +413,6 @@ namespace shapesMaker
                 {
                     placeHoldersToAdd[i].Text = Convert.ToString(button.Text);
                     lettersCorrect++;
-                }
-                {
-                    /*
-                    else if (randomWord[i] != Convert.ToChar(button.Text.ToUpper()) && randomWord[i] != Convert.ToChar("-"))
-                    {
-                        failScore++;
-                    }
-
-                    if (failScore >= randomWord.Length)
-                    {
-                        labelYouWin.Text = "yes" + Convert.ToString(failScore);
-                        failScore = 0;
-                    }
-                    */
-                    {
-                        /*
-                        if (lettersCorrect == randomWord.Length)
-                        {
-                            labelYouWin.Visible = true;
-                            labelYouWin.Text = "You Win!";
-                        }
-
-                        else
-                        {
-                            failScore++;
-                        }*/
-                    }
                 }
             }
 
@@ -415,61 +423,80 @@ namespace shapesMaker
             }
             else
             {
-                labelYouWin.Text = "no";
+                lblGameOutcome.Text = "no";
                 lettersIncorrect++;
                 txtIncorrectLetters.Text += button.Text;
             }
-            
 
-            if (lettersIncorrect == 1)
             {
-                picStandBase.Show();
+                if (lettersIncorrect == 1)
+                {
+                    picStandBase.Show();
+                }
+                if (lettersIncorrect == 2)
+                {
+                    picStandPole.Show();
+                }
+                if (lettersIncorrect == 3)
+                {
+                    picStandTop.Show();
+                }
+                if (lettersIncorrect == 4)
+                {
+                    picStandSupport.Show();
+                }
+                if (lettersIncorrect == 5)
+                {
+                    picRope.Show();
+                }
+                if (lettersIncorrect == 6)
+                {
+                    picHead.Show();
+                }
+                if (lettersIncorrect == 7)
+                {
+                    picTorso.Show();
+                }
+                if (lettersIncorrect == 8)
+                {
+                    picLeftArm.Show();
+                }
+                if (lettersIncorrect == 9)
+                {
+                    picRightArm.Show();
+                }
+                if (lettersIncorrect == 10)
+                {
+                    picLeftLeg.Show();
+                }
+                if (lettersIncorrect == 11)
+                {
+                    picRightLeg.Show();
+                    LetterButtonsDisable();
+                    btnNewGame.Show();
+                    btnNewGame.Enabled = true;
+                    btnNewWord.Hide();
+                    btnNewWord.Enabled = false;
+                    btnInstructions2.Enabled = false;
+                    lblGameOutcome.Visible = true;
+                    lblGameOutcome.Text = "You lost with a score of " + score + ".\nThe word was " + randomWord;
+                }
             }
-            if (lettersIncorrect == 2)
-            {
-                picStandPole.Show();
-            }
-            if (lettersIncorrect == 3)
-            {
-                picStandTop.Show();
-            }
-            if (lettersIncorrect == 4)
-            {
-                picStandSupport.Show();
-            }
-            if (lettersIncorrect == 5)
-            {
-                picRope.Show();
-            }
-            if (lettersIncorrect == 6)
-            {
-                picHead.Show();
-            }
-            if (lettersIncorrect == 7)
-            {
-                picTorso.Show();
-            }
-            if (lettersIncorrect == 8)
-            {
-                picLeftArm.Show();
-            }
-            if (lettersIncorrect == 9)
-            {
-                picRightArm.Show();
-            }
-            if (lettersIncorrect == 10)
-            {
-                picLeftLeg.Show();
-            }
-            if (lettersIncorrect == 11)
-            {
-                picRightLeg.Show();
-            }
-
 
             if (lettersCorrect == randomWord.Length)
             {
-                labelYouWin.Text = "You win!";
+                lblGameOutcome.Show();
+                lblGameOutcome.Text = "You win!";
+                LetterButtonsDisable();
+                score++;
+
+                btnNewGame.Hide();
+                btnNewGame.Enabled = false;
+                btnNewWord.Show();
+                btnNewWord.Enabled = true;
+
+                btnInstructions2.Enabled = false;
+
             }
 
 
@@ -496,13 +523,7 @@ namespace shapesMaker
 
 
 
-        private void btnInstructions_Click(object sender, EventArgs e)
-        {
-            btnInstructions.Hide();
-            btnStart.Top = 580;
-            btnStart.Left = 400;
-            txtInstructions.Show();
-        }
+
 
         void Title(PaintEventArgs e)
         {
@@ -514,20 +535,12 @@ namespace shapesMaker
             g.DrawString(drawString, drawFont, drawBrush, drawPoint);
         }
 
-        private void btnInstructionsHide_Click(object sender, EventArgs e)
+        private void btnInstructions_Click(object sender, EventArgs e)
         {
-            btnInstructionsHide.Hide();
-            txtInstructions.Hide();
-            LetterButtonsEnable();
-            btnInstructions2.Enabled = true;
-            btnNewWord.Enabled = true;
-            btnGetRandomWord.Enabled = true;
-
-            foreach (Button button in pressedLetter)
-            {
-                button.Enabled = false;
-            }
-
+            btnInstructions.Hide();
+            btnStart.Top = 580;
+            btnStart.Left = 400;
+            txtInstructions.Show();
         }
 
         private void btnInstructions2_Click(object sender, EventArgs e)
@@ -547,12 +560,26 @@ namespace shapesMaker
             LetterButtonsDisable();
             btnInstructions2.Enabled = false;
             btnNewWord.Enabled = false;
-            btnGetRandomWord.Enabled = false;
 
             foreach (Button button in pressedLetter)
             {
                 button.Enabled = false;
             }
+        }
+
+        private void btnInstructionsHide_Click(object sender, EventArgs e)
+        {
+            btnInstructionsHide.Hide();
+            txtInstructions.Hide();
+            LetterButtonsEnable();
+            btnInstructions2.Enabled = true;
+            btnNewWord.Enabled = true;
+
+            foreach (Button button in pressedLetter)
+            {
+                button.Enabled = false;
+            }
+
         }
 
         private void LetterButtonsShow()
@@ -673,6 +700,21 @@ namespace shapesMaker
             btnX.Enabled = true;
             btnY.Enabled = true;
             btnZ.Enabled = true;
+        }
+
+        private void HangmanHide()
+        {
+            picStandBase.Hide();
+            picStandPole.Hide();
+            picStandTop.Hide();
+            picStandSupport.Hide();
+            picRope.Hide();
+            picHead.Hide();
+            picTorso.Hide();
+            picLeftArm.Hide();
+            picRightArm.Hide();
+            picLeftLeg.Hide();
+            picRightLeg.Hide();
         }
 
         private void RemoveAllPlaceHolders()
