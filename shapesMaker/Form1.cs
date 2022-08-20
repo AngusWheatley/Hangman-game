@@ -17,8 +17,6 @@ namespace shapesMaker
         string randomWord = "";
         int score = 0;
         int failScore = 0;
-        int checkOne = 0;
-        int checkTwo = 0;
 
         List<Button> pressedLetter = new List<Button>();
 
@@ -72,6 +70,29 @@ namespace shapesMaker
             lblScore.Hide();
             lblScore.Width = 50;
             lblScore.Height = 20;
+
+            picStandBase.Width = 300;
+            picStandBase.Height = 10;
+            picStandBase.Left = 50;
+            picStandBase.Top = 550;
+
+            picStandPole.Width = 15;
+            picStandPole.Height = 400;
+            picStandPole.Left = 75;
+            picStandPole.Top = 150;
+
+            picStandTop.Width = 230;
+            picStandTop.Height = 15;
+            picStandTop.Left = 75;
+            picStandTop.Top = 150;
+
+            Image picStandSupportImage = picStandSupport.Image;
+            picStandSupport.Width = 120;
+            picStandSupport.Height = 15;
+            picStandSupport.Left = 80;
+            picStandSupport.Top = 200;
+            picStandSupportImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            picStandSupport.Image = picStandSupportImage;
 
 
             LetterButtonsHide();
@@ -207,36 +228,19 @@ namespace shapesMaker
             g.DrawArc(myPen, 400, 100, 50, 50, 0, 315);
             */
 
-            g.DrawRectangle(blackPen, 40, 580, 250, 1);
 
-            g.DrawRectangle(blackPen, 50, 100, 240, 1);
-
-            g.DrawRectangle(blackPen, 50, 100, 1, 480);
-
-
+            g.DrawLine(blackPen, 50, 100, 270, 100);
             g.DrawLine(blackPen, 50, 190, 140, 100);
-            g.DrawLine(blackPen, 54, 186, 140, 100);
-
-            g.DrawRectangle(blackPen, 270, 100, 1, 80);
-
-
+            g.DrawLine(blackPen, 270, 100, 270, 180);
             g.DrawArc(blackPen, 230, 180, 80, 80, 0, 360);
             g.DrawLine(blackPen, 270, 260, 270, 400);
-
             g.DrawLine(blackPen, 270, 260, 220, 340);
-
             g.DrawLine(blackPen, 270, 260, 320, 340);
-
             g.DrawLine(blackPen, 270, 400, 220, 480);
-
             g.DrawLine(blackPen, 270, 400, 320, 480);
-
             g.DrawLine(blackPen, 245, 200, 260, 215);
-
             g.DrawLine(blackPen, 245, 215, 260, 200);
-
             g.DrawLine(blackPen, 295, 215, 280, 200);
-
             g.DrawLine(blackPen, 295, 200, 280, 215);
 
 
@@ -252,19 +256,13 @@ namespace shapesMaker
 
         private void btnNewWord_Load(object sender, EventArgs e)
         {
-            
+
         }
 
 
         private void btnNewWord_Click(object sender, EventArgs e)
         {
 
-            List<string> words = new List<string>();
-            RemoveAllPlaceHolders();
-            ReadTextFile(words);
-            SelectRandomWord(words);
-            CreateLabelsForRandomWord();
-            LetterButtonsEnable();
         }
 
         private void lblScore_Load(object sender, EventArgs e)
@@ -275,7 +273,7 @@ namespace shapesMaker
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            
+
             btnStart.Hide();
 
             lblScore.Show();
@@ -307,7 +305,7 @@ namespace shapesMaker
         private void LetterPress(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            
+
 
 
             List<Label> placeHoldersToAdd = new List<Label>();
@@ -319,8 +317,10 @@ namespace shapesMaker
                 }
             }
 
-
             int lettersCorrect = 0;
+            int j = 0;
+            int k = 0;
+
             for (int i = 0; i < randomWord.Length; i++)
             {
                 button.Enabled = false;
@@ -328,57 +328,78 @@ namespace shapesMaker
                 if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
                 {
                     placeHoldersToAdd[i].Text = Convert.ToString(button.Text);
-                    checkOne++;
+                    k = 1;
                 }
-
-                {/*
-                    for (j = j; j < 1; j++)
+                /*
+                else if (randomWord[i] != Convert.ToChar(button.Text.ToUpper()) && randomWord[i] != Convert.ToChar("-"))
+                {
+                    failScore++;
+                }
+                
+                if (failScore >= randomWord.Length)
+                {
+                    labelYouWin.Text = "yes" + Convert.ToString(failScore);
+                    failScore = 0;
+                }
+                */
+                {
+                    /*
+                    if (lettersCorrect == randomWord.Length)
                     {
-                        int k = 0;
-                        if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
-                        {
-                            k++;
-                        }
+                        labelYouWin.Visible = true;
+                        labelYouWin.Text = "You Win!";
+                    }
 
-                        for (k = 0; k < 1; k++)
-                        {
-                            if (Convert.ToChar(button.Text.ToLower()) != randomWord[i])
-                            {
-                                labelYouWin.Text = "yes";
-                                j++;
-                            }
-                        }
+                    else
+                    {
+                        failScore++;
                     }*/
                 }
-
             }
 
-            checkTwo = checkOne;
-            if (checkTwo == randomWord.Length)
             {
-                btnGetRandomWord.Enabled = true;
-                labelYouWin.Text = "Win";
-                btnNewWord.Enabled = true;
+                /*
+                if (Convert.ToChar(button.Text()) == randomWord.Length)
+                {
 
-                LetterButtonsDisable();
+                }
+                */
 
+
+                /*
+                if (failScore == 1)
+                {
+                    drawing1 = g.DrawLine(blackPen, 50, 100, 50, 600);
+                }
+                */
             }
-            
-            { /*
-            if (Convert.ToChar(button.Text()) == randomWord.Length)
+
+            if (randomWord.Contains(button.Text.ToLower()))
             {
-
+                labelYouWin.Text = "yes";
             }
-            */
+            else
+            {
+                labelYouWin.Text = "no";
+            }
 
             /*
-            if (failScore == 1)
+            foreach (char letter in randomWord)
             {
-                drawing1 = g.DrawLine(blackPen, 50, 100, 50, 600);
+                int i = 1;
+                if (button.Text.ToLower().Contains(letter))
+                {
+                    labelYouWin.Text = "yes";
+
+                }
+
+                for (i = i; i > 1; i++)
+                {
+                    labelYouWin.Text = "no";
+                }
+
             }
             */
-            }
-
         }
 
 
@@ -389,7 +410,7 @@ namespace shapesMaker
             btnInstructions.Hide();
             btnStart.Top = 580;
             btnStart.Left = 400;
-            txtInstructions.Show(); 
+            txtInstructions.Show();
         }
 
         void Title(PaintEventArgs e)
@@ -408,8 +429,8 @@ namespace shapesMaker
             txtInstructions.Hide();
             LetterButtonsEnable();
             btnInstructions2.Enabled = true;
-            btnGetRandomWord.Enabled = true;
             btnNewWord.Enabled = true;
+            btnGetRandomWord.Enabled = true;
 
             foreach (Button button in pressedLetter)
             {
@@ -420,7 +441,7 @@ namespace shapesMaker
 
         private void btnInstructions2_Click(object sender, EventArgs e)
         {
-            
+
             foreach (Button button in Controls.OfType<Button>())
             {
                 if (button.Enabled == false)
@@ -581,7 +602,7 @@ namespace shapesMaker
             }
         }
 
-        private static void ReadTextFile(List <string> words)
+        private static void ReadTextFile(List<string> words)
         {
             StreamReader sr = new StreamReader(wordFile);   //Creates a streamreader used to read the words from the external file
             string line = "";   //Stores each word temporarily 
@@ -609,7 +630,7 @@ namespace shapesMaker
             for (int i = 0; i < randomWord.Length; i++)
             {
                 labels[i] = new Label();
-                labels[i].Text = "--";
+                labels[i].Text = "-";
                 labels[i].Location = new Point(xPos, 450);
                 labels[i].Enabled = true;
                 labels[i].Visible = true;
