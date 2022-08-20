@@ -68,10 +68,25 @@
             this.picStandPole = new System.Windows.Forms.PictureBox();
             this.picStandTop = new System.Windows.Forms.PictureBox();
             this.picStandSupport = new System.Windows.Forms.PictureBox();
+            this.picRope = new System.Windows.Forms.PictureBox();
+            this.picHead = new System.Windows.Forms.PictureBox();
+            this.picTorso = new System.Windows.Forms.PictureBox();
+            this.picLeftArm = new System.Windows.Forms.PictureBox();
+            this.picRightArm = new System.Windows.Forms.PictureBox();
+            this.picLeftLeg = new System.Windows.Forms.PictureBox();
+            this.picRightLeg = new System.Windows.Forms.PictureBox();
+            this.txtIncorrectLetters = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picStandBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStandPole)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStandTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStandSupport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRope)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHead)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTorso)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLeftArm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRightArm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLeftLeg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRightLeg)).BeginInit();
             this.SuspendLayout();
             // 
             // btnNewWord
@@ -471,7 +486,8 @@
             // 
             // picStandBase
             // 
-            this.picStandBase.BackColor = System.Drawing.Color.BurlyWood;
+            this.picStandBase.BackColor = System.Drawing.Color.Gray;
+            this.picStandBase.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picStandBase.Location = new System.Drawing.Point(392, 192);
             this.picStandBase.Name = "picStandBase";
             this.picStandBase.Size = new System.Drawing.Size(220, 10);
@@ -481,6 +497,7 @@
             // picStandPole
             // 
             this.picStandPole.BackColor = System.Drawing.Color.BurlyWood;
+            this.picStandPole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picStandPole.Location = new System.Drawing.Point(392, 212);
             this.picStandPole.Name = "picStandPole";
             this.picStandPole.Size = new System.Drawing.Size(220, 10);
@@ -490,6 +507,7 @@
             // picStandTop
             // 
             this.picStandTop.BackColor = System.Drawing.Color.BurlyWood;
+            this.picStandTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picStandTop.Location = new System.Drawing.Point(392, 232);
             this.picStandTop.Name = "picStandTop";
             this.picStandTop.Size = new System.Drawing.Size(220, 10);
@@ -499,20 +517,108 @@
             // picStandSupport
             // 
             this.picStandSupport.BackColor = System.Drawing.Color.BurlyWood;
+            this.picStandSupport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picStandSupport.Location = new System.Drawing.Point(392, 252);
             this.picStandSupport.Name = "picStandSupport";
             this.picStandSupport.Size = new System.Drawing.Size(65, 10);
             this.picStandSupport.TabIndex = 10;
             this.picStandSupport.TabStop = false;
             // 
+            // picRope
+            // 
+            this.picRope.BackColor = System.Drawing.Color.Chocolate;
+            this.picRope.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picRope.Location = new System.Drawing.Point(392, 268);
+            this.picRope.Name = "picRope";
+            this.picRope.Size = new System.Drawing.Size(220, 10);
+            this.picRope.TabIndex = 10;
+            this.picRope.TabStop = false;
+            // 
+            // picHead
+            // 
+            this.picHead.BackColor = System.Drawing.Color.Bisque;
+            this.picHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picHead.Location = new System.Drawing.Point(392, 79);
+            this.picHead.Name = "picHead";
+            this.picHead.Size = new System.Drawing.Size(50, 50);
+            this.picHead.TabIndex = 11;
+            this.picHead.TabStop = false;
+            // 
+            // picTorso
+            // 
+            this.picTorso.BackColor = System.Drawing.Color.Bisque;
+            this.picTorso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picTorso.Location = new System.Drawing.Point(448, 79);
+            this.picTorso.Name = "picTorso";
+            this.picTorso.Size = new System.Drawing.Size(50, 50);
+            this.picTorso.TabIndex = 11;
+            this.picTorso.TabStop = false;
+            // 
+            // picLeftArm
+            // 
+            this.picLeftArm.BackColor = System.Drawing.Color.Bisque;
+            this.picLeftArm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picLeftArm.Location = new System.Drawing.Point(504, 79);
+            this.picLeftArm.Name = "picLeftArm";
+            this.picLeftArm.Size = new System.Drawing.Size(50, 29);
+            this.picLeftArm.TabIndex = 11;
+            this.picLeftArm.TabStop = false;
+            // 
+            // picRightArm
+            // 
+            this.picRightArm.BackColor = System.Drawing.Color.Bisque;
+            this.picRightArm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picRightArm.Location = new System.Drawing.Point(560, 79);
+            this.picRightArm.Name = "picRightArm";
+            this.picRightArm.Size = new System.Drawing.Size(50, 29);
+            this.picRightArm.TabIndex = 11;
+            this.picRightArm.TabStop = false;
+            // 
+            // picLeftLeg
+            // 
+            this.picLeftLeg.BackColor = System.Drawing.Color.Bisque;
+            this.picLeftLeg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picLeftLeg.Location = new System.Drawing.Point(616, 100);
+            this.picLeftLeg.Name = "picLeftLeg";
+            this.picLeftLeg.Size = new System.Drawing.Size(50, 29);
+            this.picLeftLeg.TabIndex = 11;
+            this.picLeftLeg.TabStop = false;
+            // 
+            // picRightLeg
+            // 
+            this.picRightLeg.BackColor = System.Drawing.Color.Bisque;
+            this.picRightLeg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picRightLeg.Location = new System.Drawing.Point(672, 100);
+            this.picRightLeg.Name = "picRightLeg";
+            this.picRightLeg.Size = new System.Drawing.Size(50, 29);
+            this.picRightLeg.TabIndex = 11;
+            this.picRightLeg.TabStop = false;
+            // 
+            // txtIncorrectLetters
+            // 
+            this.txtIncorrectLetters.Enabled = false;
+            this.txtIncorrectLetters.Location = new System.Drawing.Point(738, 217);
+            this.txtIncorrectLetters.Multiline = true;
+            this.txtIncorrectLetters.Name = "txtIncorrectLetters";
+            this.txtIncorrectLetters.Size = new System.Drawing.Size(100, 20);
+            this.txtIncorrectLetters.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 761);
+            this.Controls.Add(this.txtIncorrectLetters);
+            this.Controls.Add(this.picRightLeg);
+            this.Controls.Add(this.picLeftLeg);
+            this.Controls.Add(this.picRightArm);
+            this.Controls.Add(this.picLeftArm);
+            this.Controls.Add(this.picTorso);
+            this.Controls.Add(this.picHead);
             this.Controls.Add(this.picStandSupport);
             this.Controls.Add(this.picStandTop);
             this.Controls.Add(this.picStandPole);
+            this.Controls.Add(this.picRope);
             this.Controls.Add(this.picStandBase);
             this.Controls.Add(this.labelYouWin);
             this.Controls.Add(this.btnGetRandomWord);
@@ -558,6 +664,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.picStandPole)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStandTop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picStandSupport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRope)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHead)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTorso)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLeftArm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRightArm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLeftLeg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picRightLeg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -605,6 +718,14 @@
         private System.Windows.Forms.PictureBox picStandPole;
         private System.Windows.Forms.PictureBox picStandTop;
         private System.Windows.Forms.PictureBox picStandSupport;
+        private System.Windows.Forms.PictureBox picRope;
+        private System.Windows.Forms.PictureBox picHead;
+        private System.Windows.Forms.PictureBox picTorso;
+        private System.Windows.Forms.PictureBox picLeftArm;
+        private System.Windows.Forms.PictureBox picRightArm;
+        private System.Windows.Forms.PictureBox picLeftLeg;
+        private System.Windows.Forms.PictureBox picRightLeg;
+        private System.Windows.Forms.TextBox txtIncorrectLetters;
     }
 }
 

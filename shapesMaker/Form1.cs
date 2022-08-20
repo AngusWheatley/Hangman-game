@@ -16,7 +16,8 @@ namespace shapesMaker
         const string wordFile = "wordList.txt";
         string randomWord = "";
         int score = 0;
-        int failScore = 0;
+        int lettersIncorrect = 0;
+        int lettersCorrect = 0;
 
         List<Button> pressedLetter = new List<Button>();
 
@@ -71,28 +72,78 @@ namespace shapesMaker
             lblScore.Width = 50;
             lblScore.Height = 20;
 
+
+            picStandBase.Hide();
             picStandBase.Width = 300;
             picStandBase.Height = 10;
             picStandBase.Left = 50;
             picStandBase.Top = 550;
 
+            picStandPole.Hide();
             picStandPole.Width = 15;
             picStandPole.Height = 400;
             picStandPole.Left = 75;
             picStandPole.Top = 150;
 
+            picStandTop.Hide();
             picStandTop.Width = 230;
             picStandTop.Height = 15;
             picStandTop.Left = 75;
             picStandTop.Top = 150;
 
-            Image picStandSupportImage = picStandSupport.Image;
+            //Image picStandSupportImage = picStandSupport.Image;
+            //picStandSupportImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            //picStandSupport.Image = picStandSupportImage;
+
+            picStandSupport.Hide();
             picStandSupport.Width = 120;
             picStandSupport.Height = 15;
             picStandSupport.Left = 80;
             picStandSupport.Top = 200;
-            picStandSupportImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            picStandSupport.Image = picStandSupportImage;
+
+            picRope.Hide();
+            picRope.Width = 10;
+            picRope.Height = 40;
+            picRope.Left = 260;
+            picRope.Top = 165;
+
+            picHead.Hide();
+            picHead.Width = 50;
+            picHead.Height = 50;
+            picHead.Left = 240;
+            picHead.Top = 205;
+
+            picTorso.Hide();
+            picTorso.Width = 30;
+            picTorso.Height = 100;
+            picTorso.Left = 250;
+            picTorso.Top = 255;
+
+            picLeftArm.Hide();
+            picLeftArm.Width = 50;
+            picLeftArm.Height = 8;
+            picLeftArm.Left = 280;
+            picLeftArm.Top = 270;
+
+            picRightArm.Hide();
+            picRightArm.Width = 50;
+            picRightArm.Height = 8;
+            picRightArm.Left = 200;
+            picRightArm.Top = 270;
+
+            picLeftLeg.Hide();
+            picLeftLeg.Width = 10;
+            picLeftLeg.Height = 40;
+            picLeftLeg.Left = 269;
+            picLeftLeg.Top = 355;
+
+            picRightLeg.Hide();
+            picRightLeg.Width = 10;
+            picRightLeg.Height = 40;
+            picRightLeg.Left = 251;
+            picRightLeg.Top = 355;
+
+
 
 
             LetterButtonsHide();
@@ -228,7 +279,7 @@ namespace shapesMaker
             g.DrawArc(myPen, 400, 100, 50, 50, 0, 315);
             */
 
-
+            /*
             g.DrawLine(blackPen, 50, 100, 270, 100);
             g.DrawLine(blackPen, 50, 190, 140, 100);
             g.DrawLine(blackPen, 270, 100, 270, 180);
@@ -242,7 +293,7 @@ namespace shapesMaker
             g.DrawLine(blackPen, 245, 215, 260, 200);
             g.DrawLine(blackPen, 295, 215, 280, 200);
             g.DrawLine(blackPen, 295, 200, 280, 215);
-
+            */
 
             Title(e);
 
@@ -317,9 +368,7 @@ namespace shapesMaker
                 }
             }
 
-            int lettersCorrect = 0;
             int j = 0;
-            int k = 0;
 
             for (int i = 0; i < randomWord.Length; i++)
             {
@@ -328,60 +377,102 @@ namespace shapesMaker
                 if (randomWord[i] == Convert.ToChar(button.Text.ToLower()))
                 {
                     placeHoldersToAdd[i].Text = Convert.ToString(button.Text);
-                    k = 1;
+                    lettersCorrect++;
                 }
-                /*
-                else if (randomWord[i] != Convert.ToChar(button.Text.ToUpper()) && randomWord[i] != Convert.ToChar("-"))
-                {
-                    failScore++;
-                }
-                
-                if (failScore >= randomWord.Length)
-                {
-                    labelYouWin.Text = "yes" + Convert.ToString(failScore);
-                    failScore = 0;
-                }
-                */
                 {
                     /*
-                    if (lettersCorrect == randomWord.Length)
-                    {
-                        labelYouWin.Visible = true;
-                        labelYouWin.Text = "You Win!";
-                    }
-
-                    else
+                    else if (randomWord[i] != Convert.ToChar(button.Text.ToUpper()) && randomWord[i] != Convert.ToChar("-"))
                     {
                         failScore++;
-                    }*/
+                    }
+
+                    if (failScore >= randomWord.Length)
+                    {
+                        labelYouWin.Text = "yes" + Convert.ToString(failScore);
+                        failScore = 0;
+                    }
+                    */
+                    {
+                        /*
+                        if (lettersCorrect == randomWord.Length)
+                        {
+                            labelYouWin.Visible = true;
+                            labelYouWin.Text = "You Win!";
+                        }
+
+                        else
+                        {
+                            failScore++;
+                        }*/
+                    }
                 }
             }
 
-            {
-                /*
-                if (Convert.ToChar(button.Text()) == randomWord.Length)
-                {
-
-                }
-                */
-
-
-                /*
-                if (failScore == 1)
-                {
-                    drawing1 = g.DrawLine(blackPen, 50, 100, 50, 600);
-                }
-                */
-            }
 
             if (randomWord.Contains(button.Text.ToLower()))
             {
-                labelYouWin.Text = "yes";
+
             }
             else
             {
                 labelYouWin.Text = "no";
+                lettersIncorrect++;
+                txtIncorrectLetters.Text += button.Text;
             }
+            
+
+            if (lettersIncorrect == 1)
+            {
+                picStandBase.Show();
+            }
+            if (lettersIncorrect == 2)
+            {
+                picStandPole.Show();
+            }
+            if (lettersIncorrect == 3)
+            {
+                picStandTop.Show();
+            }
+            if (lettersIncorrect == 4)
+            {
+                picStandSupport.Show();
+            }
+            if (lettersIncorrect == 5)
+            {
+                picRope.Show();
+            }
+            if (lettersIncorrect == 6)
+            {
+                picHead.Show();
+            }
+            if (lettersIncorrect == 7)
+            {
+                picTorso.Show();
+            }
+            if (lettersIncorrect == 8)
+            {
+                picLeftArm.Show();
+            }
+            if (lettersIncorrect == 9)
+            {
+                picRightArm.Show();
+            }
+            if (lettersIncorrect == 10)
+            {
+                picLeftLeg.Show();
+            }
+            if (lettersIncorrect == 11)
+            {
+                picRightLeg.Show();
+            }
+
+
+            if (lettersCorrect == randomWord.Length)
+            {
+                labelYouWin.Text = "You win!";
+            }
+
+
 
             /*
             foreach (char letter in randomWord)
