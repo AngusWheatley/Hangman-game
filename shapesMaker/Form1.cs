@@ -26,10 +26,10 @@ namespace shapesMaker
         {
             InitializeComponent();
 
-            this.Width = 1100;                  //Creates the window to be a set size
+            this.Width = 1100;                  //Creates the window to be a set size. 
             this.Height = 820;
 
-            txtInstructions.Hide();
+            txtInstructions.Hide();             //Makes the text box hide. Sets size, position and text font and size of the instructions text box. 
             txtInstructions.Width = 700;
             txtInstructions.Height = 200;
             txtInstructions.Left = 200;
@@ -37,40 +37,41 @@ namespace shapesMaker
             txtInstructions.Font = new Font(txtInstructions.Font.FontFamily, 12);
             txtInstructions.Text = "The objective of the game is to guess the word before the man is hung. Press each letter to guess if the letter is in the word. If it is not then one piece of the 'hangman' is drawn. If all eleven pieces of the 'hangman' is drawn before you correctly guess the word you lose. If you win you can choose to keep playing or leave the game. ";
 
-            lblWord.Visible = false;
+            lblWord.Hide();                     //Makes the debug word label hide
 
-            btnNewWord.Hide();
+            btnNewWord.Hide();                  //Makes the new word button hide and disable. Sets size and position of the new word button. 
             btnNewWord.Enabled = false;
             btnNewWord.Width = 160;
             btnNewWord.Height = 50;
             btnNewWord.Left = 50;
             btnNewWord.Top = 680;
 
-            btnNewGame.Hide();
+            btnNewGame.Hide();                  //Makes the new game button hide and disable. Sets size and position of the new game button. 
             btnNewGame.Enabled = false;
             btnNewGame.Width = 160;
             btnNewGame.Height = 50;
             btnNewGame.Left = 50;
             btnNewGame.Top = 680;
 
-            btnStart.Width = 300;
+            btnStart.Width = 300;               //Sets size and position of the start button. 
             btnStart.Height = 150;
             btnStart.Left = 200;
             btnStart.Top = 200;
 
-            btnInstructions.Width = 300;
+            btnInstructions.Width = 300;        //Sets size and position of the instructions button. 
             btnInstructions.Height = 150;
             btnInstructions.Left = 600;
             btnInstructions.Top = 200;
 
-            btnInstructions2.Hide();
-            btnInstructions2.Width = 230;
+            btnInstructions2.Hide();            //Makes the second instructions button
+
+            btnInstructions2.Width = 230;       //Sets size and position and font size of the second instructions button. 
             btnInstructions2.Height = 50;
             btnInstructions2.Left = 230;
             btnInstructions2.Top = 680;
             btnInstructions2.Font = new Font(txtInstructions.Font.FontFamily, 20);
 
-            btnInstructionsHide.Hide();
+            btnInstructionsHide.Hide();         //Makes the hide instructions button hide. Sets size and position of the hide instructions button. 
             btnInstructionsHide.Width = 120;
             btnInstructionsHide.Height = 40;
             btnInstructionsHide.Left = 768;
@@ -486,7 +487,7 @@ namespace shapesMaker
             if (lettersCorrect == randomWord.Length)
             {
                 lblGameOutcome.Show();
-                lblGameOutcome.Text = "You win!";
+                lblGameOutcome.Text = "You win!\nCurrent score is " + score;
                 LetterButtonsDisable();
                 score++;
 
