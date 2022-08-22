@@ -27,7 +27,7 @@ namespace shapesMaker
             InitializeComponent();
 
             this.Width = 1100;                  //Creates the window to be a set size. 
-            this.Height = 820;
+            this.Height = 810;
 
             txtInstructions.Hide();             //Makes the text box hide. Sets size, position and text font and size of the instructions text box. 
             txtInstructions.Width = 700;
@@ -113,10 +113,10 @@ namespace shapesMaker
             //picStandSupportImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
             //picStandSupport.Image = picStandSupportImage;
             picStandSupport.Hide();
-            picStandSupport.Width = 120;
-            picStandSupport.Height = 15;
+            picStandSupport.Width = 70;
+            picStandSupport.Height = 90;
             picStandSupport.Left = 80;
-            picStandSupport.Top = 200;
+            picStandSupport.Top = 150;
 
             picRope.Hide();
             picRope.Width = 10;
@@ -294,9 +294,7 @@ namespace shapesMaker
             g.DrawRectangle(myPen, 100, 100, 200, 150);
             g.DrawEllipse(myPen, 300, 200, 50, 50);
             g.DrawArc(myPen, 400, 100, 50, 50, 0, 315);
-            */
 
-            /*
             g.DrawLine(blackPen, 50, 100, 270, 100);
             g.DrawLine(blackPen, 50, 190, 140, 100);
             g.DrawLine(blackPen, 270, 100, 270, 180);
@@ -371,9 +369,7 @@ namespace shapesMaker
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-
             btnStart.Hide();
-
             lblScore.Show();
             btnNewWord.Show();
             LetterButtonsShow();
@@ -387,15 +383,11 @@ namespace shapesMaker
             SelectRandomWord(words);
             CreateLabelsForRandomWord();
             txtIncorrectLetters.Show();
-
-
         }
 
         private void LetterPress(object sender, EventArgs e)
         {
             Button button = sender as Button;
-
-
 
             List<Label> placeHoldersToAdd = new List<Label>();
             foreach (Label label in Controls.OfType<Label>())
@@ -486,10 +478,10 @@ namespace shapesMaker
 
             if (lettersCorrect == randomWord.Length)
             {
+                score++;
                 lblGameOutcome.Show();
                 lblGameOutcome.Text = "You win!\nCurrent score is " + score;
                 LetterButtonsDisable();
-                score++;
 
                 btnNewGame.Hide();
                 btnNewGame.Enabled = false;
@@ -499,8 +491,6 @@ namespace shapesMaker
                 btnInstructions2.Enabled = false;
 
             }
-
-
 
             /*
             foreach (char letter in randomWord)
@@ -520,10 +510,6 @@ namespace shapesMaker
             }
             */
         }
-
-
-
-
 
 
         void Title(PaintEventArgs e)

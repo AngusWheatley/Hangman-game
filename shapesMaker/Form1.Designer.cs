@@ -108,7 +108,7 @@
             this.lblScore.Location = new System.Drawing.Point(17, 26);
             this.lblScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(52, 15);
+            this.lblScore.Size = new System.Drawing.Size(61, 17);
             this.lblScore.TabIndex = 1;
             this.lblScore.Text = "Score: 0";
             this.lblScore.Click += new System.EventHandler(this.lblScore_Load);
@@ -458,7 +458,7 @@
             this.lblWord.AutoSize = true;
             this.lblWord.Location = new System.Drawing.Point(577, 467);
             this.lblWord.Name = "lblWord";
-            this.lblWord.Size = new System.Drawing.Size(34, 14);
+            this.lblWord.Size = new System.Drawing.Size(39, 16);
             this.lblWord.TabIndex = 7;
             this.lblWord.Text = "label1";
             // 
@@ -582,14 +582,14 @@
             this.txtIncorrectLetters.Size = new System.Drawing.Size(100, 21);
             this.txtIncorrectLetters.TabIndex = 12;
             // 
-            // labelYouWin
+            // lblGameOutcome
             // 
             this.lblGameOutcome.AutoSize = true;
             this.lblGameOutcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
             this.lblGameOutcome.Location = new System.Drawing.Point(479, 336);
             this.lblGameOutcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblGameOutcome.Name = "labelYouWin";
-            this.lblGameOutcome.Size = new System.Drawing.Size(86, 31);
+            this.lblGameOutcome.Name = "lblGameOutcome";
+            this.lblGameOutcome.Size = new System.Drawing.Size(109, 39);
             this.lblGameOutcome.TabIndex = 9;
             this.lblGameOutcome.Text = "label1";
             // 
@@ -607,7 +607,7 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 781);
             this.Controls.Add(this.txtIncorrectLetters);
