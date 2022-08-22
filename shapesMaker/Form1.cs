@@ -109,9 +109,6 @@ namespace shapesMaker
             picStandTop.Left = 75;
             picStandTop.Top = 150;
 
-            //Image picStandSupportImage = picStandSupport.Image;
-            //picStandSupportImage.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            //picStandSupport.Image = picStandSupportImage;
             picStandSupport.Hide();
             picStandSupport.Width = 70;
             picStandSupport.Height = 90;
@@ -161,125 +158,7 @@ namespace shapesMaker
             picRightLeg.Top = 355;
 
 
-
-
             LetterButtonsHide();
-
-            {
-                /*
-                btnA.Hide();
-                btnA.Width = 50;
-                btnA.Height = 34;
-                btnA.Left = 597;
-                btnA.Top = 505;
-
-                btnB.Hide();
-                btnB.Width = 50;
-                btnB.Height = 34;
-                btnB.Left = 653;
-                btnB.Top = 505;
-
-                btnC.Hide();
-                btnC.Width = 50;
-                btnC.Height = 34;
-                btnC.Left = 709;
-                btnC.Top = 505;
-
-                btnD.Hide();
-                btnD.Width = 50;
-                btnD.Height = 34;
-                btnD.
-
-                btnE.Hide();
-                btnE.Width = 50;
-                btnE.Height = 34;
-
-                btnF.Hide();
-                btnF.Width = 50;
-                btnF.Height = 34;
-
-                btnG.Hide();
-                btnG.Width = 50;
-                btnG.Height = 34;
-
-                btnH.Hide();
-                btnH.Width = 50;
-                btnH.Height = 34;
-
-                btnI.Hide();
-                btnI.Width = 50;
-                btnI.Height = 34;
-
-                btnJ.Hide();
-                btnJ.Width = 50;
-                btnJ.Height = 34;
-
-                btnK.Hide();
-                btnK.Width = 50;
-                btnK.Height = 34;
-
-                btnL.Hide();
-                btnL.Width = 50;
-                btnL.Height = 34;
-
-                btnM.Hide();
-                btnM.Width = 50;
-                btnM.Height = 34;
-
-                btnN.Hide();
-                btnN.Width = 50;
-                btnN.Height = 34;
-
-                btnO.Hide();
-                btnO.Width = 50;
-                btnO.Height = 34;
-
-                btnP.Hide();
-                btnP.Width = 50;
-                btnP.Height = 34;
-
-                btnQ.Hide();
-                btnQ.Width = 50;
-                btnQ.Height = 34;
-
-                btnR.Hide();
-                btnR.Width = 50;
-                btnR.Height = 34;
-
-                btnS.Hide();
-                btnS.Width = 50;
-                btnS.Height = 34;
-
-                btnT.Hide();
-                btnT.Width = 50;
-                btnT.Height = 34;
-
-                btnU.Hide();
-                btnU.Width = 50;
-                btnU.Height = 34;
-
-                btnV.Hide();
-                btnV.Width = 50;
-                btnV.Height = 34;
-
-                btnW.Hide();
-                btnW.Width = 50;
-                btnW.Height = 34;
-
-                btnX.Hide();
-                btnX.Width = 50;
-                btnX.Height = 34;
-
-                btnY.Hide();
-                btnY.Width = 50;
-                btnY.Height = 34;
-
-                btnZ.Hide();
-                btnZ.Width = 50;
-                btnZ.Height = 34;
-                */
-            }
-
         }
 
 
@@ -289,26 +168,6 @@ namespace shapesMaker
             Pen blackPen = new Pen(Color.Black);               //Pen for drawing lines
             Brush brush = new SolidBrush(Color.Red);        //Brush for drawing shapes
 
-            /*
-            g.DrawLine(myPen, 2, 2, 400, 450);
-            g.DrawRectangle(myPen, 100, 100, 200, 150);
-            g.DrawEllipse(myPen, 300, 200, 50, 50);
-            g.DrawArc(myPen, 400, 100, 50, 50, 0, 315);
-
-            g.DrawLine(blackPen, 50, 100, 270, 100);
-            g.DrawLine(blackPen, 50, 190, 140, 100);
-            g.DrawLine(blackPen, 270, 100, 270, 180);
-            g.DrawArc(blackPen, 230, 180, 80, 80, 0, 360);
-            g.DrawLine(blackPen, 270, 260, 270, 400);
-            g.DrawLine(blackPen, 270, 260, 220, 340);
-            g.DrawLine(blackPen, 270, 260, 320, 340);
-            g.DrawLine(blackPen, 270, 400, 220, 480);
-            g.DrawLine(blackPen, 270, 400, 320, 480);
-            g.DrawLine(blackPen, 245, 200, 260, 215);
-            g.DrawLine(blackPen, 245, 215, 260, 200);
-            g.DrawLine(blackPen, 295, 215, 280, 200);
-            g.DrawLine(blackPen, 295, 200, 280, 215);
-            */
 
             Title(e);
 
@@ -420,7 +279,6 @@ namespace shapesMaker
                 lettersIncorrect++;
                 txtIncorrectLetters.Text += button.Text;
             }
-
             {
                 if (lettersIncorrect == 1)
                 {
@@ -482,33 +340,12 @@ namespace shapesMaker
                 lblGameOutcome.Show();
                 lblGameOutcome.Text = "You win!\nCurrent score is " + score;
                 LetterButtonsDisable();
-
                 btnNewGame.Hide();
                 btnNewGame.Enabled = false;
                 btnNewWord.Show();
                 btnNewWord.Enabled = true;
-
                 btnInstructions2.Enabled = false;
-
             }
-
-            /*
-            foreach (char letter in randomWord)
-            {
-                int i = 1;
-                if (button.Text.ToLower().Contains(letter))
-                {
-                    labelYouWin.Text = "yes";
-
-                }
-
-                for (i = i; i > 1; i++)
-                {
-                    labelYouWin.Text = "no";
-                }
-
-            }
-            */
         }
 
 
@@ -764,13 +601,5 @@ namespace shapesMaker
                 this.Controls.Add(labels[i]);
             }
         }
-
-        /*
-        private void printFirstLine(PaintEventArgs pe, int x)
-        {
-            Graphics gr = pe.Graphics;
-            Pen blackPen = new Pen(Color.Black);
-            gr.DrawLine(blackPen, 50, 100, 50, 600);
-        }*/
     }
 }
