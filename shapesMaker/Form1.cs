@@ -29,6 +29,7 @@ namespace shapesMaker
             this.Width = 1100;                  //Creates the window to be a set size. 
             this.Height = 810;
 
+
             txtInstructions.Hide();             //Makes the text box hide. Sets size, position and text font and size of the instructions text box. 
             txtInstructions.Width = 700;
             txtInstructions.Height = 200;
@@ -89,6 +90,7 @@ namespace shapesMaker
             txtIncorrectLetters.Left = 800;
             txtIncorrectLetters.Top = 400;
             txtIncorrectLetters.Text = "Incorrect Letters: \n";
+            txtIncorrectLetters.SendToBack();
 
 
             picStandBase.Hide();
@@ -111,7 +113,7 @@ namespace shapesMaker
 
             picStandSupport.Hide();
             picStandSupport.Width = 70;
-            picStandSupport.Height = 90;
+            picStandSupport.Height = 80;
             picStandSupport.Left = 80;
             picStandSupport.Top = 150;
 
@@ -340,6 +342,8 @@ namespace shapesMaker
                 lblGameOutcome.Show();
                 lblGameOutcome.Text = "You win!\nCurrent score is " + score;
                 LetterButtonsDisable();
+
+
                 btnNewGame.Hide();
                 btnNewGame.Enabled = false;
                 btnNewWord.Show();

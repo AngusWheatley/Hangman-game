@@ -105,7 +105,7 @@
             // 
             this.lblScore.AutoSize = true;
             this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.35F);
-            this.lblScore.Location = new System.Drawing.Point(17, 26);
+            this.lblScore.Location = new System.Drawing.Point(50, 646);
             this.lblScore.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(61, 17);
